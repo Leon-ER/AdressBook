@@ -69,13 +69,11 @@ function App() {
 
   const showUsers = () => {
     const storedUsers = getUsersFromStorage();
-
     const filteredUsers = storedUsers.filter(user => {
       const matchesUserType = userType ? user.dept.toLowerCase() === userType.toLowerCase() : true;
       const matchesSearchQuery = user.name.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesUserType && matchesSearchQuery;
     });
-
     setUsers(filteredUsers);
   };
 
@@ -167,7 +165,7 @@ function App() {
                 />
               )}
               <h5 className="card-title">{selectedUser.name}</h5>
-              <p className="card-text"><strong>Address:</strong> {selectedUser.address}</p>
+              <p className="card-text"><strong>Email:</strong> {selectedUser.email}</p>
               <p className="card-text"><strong>Department:</strong> {selectedUser.dept}</p>
               <p className="card-text"><strong>Phone:</strong> {selectedUser.phone}</p>
             </div>
@@ -186,7 +184,7 @@ function App() {
         <thead className="table-dark">
           <tr>
             <th>Name</th>
-            <th>Address</th>
+            <th>Email</th>
             <th>Department</th>
             <th>Phone</th>
           </tr>
@@ -202,7 +200,7 @@ function App() {
             users.map((user, index) => (
               <tr key={index} onClick={() => handleSelectUser(user)}>
                 <td>{user.name}</td>
-                <td>{user.address}</td>
+                <td>{user.email}</td>
                 <td>{user.dept}</td>
                 <td>{user.phone}</td>
               </tr>
